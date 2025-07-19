@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.Home {
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f172a;
+  color: #ff00ea;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.loading-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #ffffff;
+  border-top: 6px solid #ff00ea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
+.loading-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff00ea;
+  font-family: 'Orbitron', sans-serif;
+}
+
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+
+  100% {
     transform: rotate(360deg);
   }
+}
+
+.auth-buttons h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #a438f6;
+  text-shadow: 0 0 10px #ff70f3;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  /* transparan putih */
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px #8c03f5;
+  /* neon glow */
+  border: 1px solid #ff00ea;
+}
+
+
+.auth-buttons button {
+  width: 150px;
+  padding: 10px;
+  margin: 10px;
+  background-color: transparent;
+  border: 2px solid #ae43ff;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #ae43ff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.auth-buttons button:hover {
+  background-color: #8f02fb;
+  color: #ffffff;
+  box-shadow: 0 0 10px #8f02fb;
+}
+
+.auth-buttons button:active {
+  transform: scale(0.95);
 }
