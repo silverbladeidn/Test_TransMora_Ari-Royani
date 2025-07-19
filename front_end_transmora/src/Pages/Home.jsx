@@ -33,7 +33,7 @@ function Home() {
                 <div className="auth-buttons">
                     <h1>Welcome to ArLectro</h1>
                     <button onClick={() => navigate('/login')}>Login</button>
-                    <button onClick={() => alert('Register clicked')}>Register</button>
+                    <button onClick={() => navigate('/register')}>Register</button>
                 </div>
             )}
         </div>

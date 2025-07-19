@@ -1,0 +1,106 @@
+.Login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f172a;
+    color: #ff00ea;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.Login h1 {
+    text-align: center;
+    color: #ae43ff;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px #8c03f5;
+    border: 1px solid #ff00ea;
+    margin-top: 20px;
+}
+
+.form-buttons h1 {
+    color: #ae43ff;
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-logins h2 {
+    color: #ae43ff;
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.form-logins input {
+    width: 100%;
+    padding: 12px 5px;
+    color: #ae43ff;
+    font-size: 18px;
+    margin-bottom: 3px;
+    text-align: left;
+    background-color: transparent;
+    border: 2px solid #ae43ff;
+    border-radius: 8px;
+    outline: none;
+    caret-color: #ff00ea;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.form-logins input::placeholder {
+    color: #a556e0;
+    opacity: 0.6;
+}
+
+.form-logins input:focus {
+    border-color: #ff00ea;
+    box-shadow: 0 0 15px #ff00ea;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #0f172a inset !important;
+    -webkit-text-fill-color: #ae43ff !important;
+    caret-color: #ff00ea;
+}
+
+.form-buttons button {
+    display: inline-block;
+    width: 120px;
+    height: 60px;
+    padding: 10px;
+    margin: 0 10px;
+    background-color: transparent;
+    border: 2px solid #ae43ff;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #ae43ff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.form-buttons button:hover {
+    background-color: #ae43ff;
+    color: #0f172a;
+    box-shadow: 0 0 20px #ae43ff;
+}
+
+.button-row {
+    display: flex;
+    flex-direction: row;
+    /* button sejajar horizontal */
+    margin-top: 30px;
+    gap: 20px;
+}
