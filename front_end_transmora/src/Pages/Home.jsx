@@ -30,7 +30,7 @@ function Home() {
                     <p className="loading-text">{progress}%</p>
                 </div>
             ) : (
-                <div className="auth-buttons">
+                <div className="auth-buttons" style={{ marginTop: '150px' }}>
                     <h1>Welcome to ArLectro</h1>
                     <button onClick={() => navigate('/login')}>Login</button>
                     <button onClick={() => navigate('/register')}>Register</button>

@@ -6,7 +6,7 @@
 .Home {
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 2rem;
     background-color: #0f172a;

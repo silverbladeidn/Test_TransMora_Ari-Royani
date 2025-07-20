@@ -55,7 +55,7 @@ function Dashboard() {
                         <p className="loading-text">{progress}%</p>
                     </div>
                 ) : (
-                    <div className="content">
+                    <div className="content" style={{ paddingTop: '200px' }}>
                         <h1>{currentText?.welcome}</h1>
                         <p>
                             {currentText?.description}

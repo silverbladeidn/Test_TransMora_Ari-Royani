@@ -44,7 +44,7 @@ function Login() {
     return (
         <div className="Login">
             <div className="form-buttons">
-                <h1>Silahkan Login....</h1>
+                <h1 style={{ paddingBottom: '20px' }}>Silahkan Login....</h1>
                 {error && <div className="error-message">{error}</div>}
                 <form onSubmit={handleLogin} className="form-logins">
                     <h2>Email</h2>
@@ -56,7 +56,8 @@ function Login() {
                         onChange={handleChange}
                         required
                     />
-                    <h2>Password</h2>
+                    <h2
+                        style={{ paddingTop: '20px' }}>Password</h2>
                     <input
                         type="password"
                         name="password"
@@ -76,7 +77,7 @@ function Login() {
                     Belum punya akun? <span onClick={() => navigate('/register')}>Daftar disini</span>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

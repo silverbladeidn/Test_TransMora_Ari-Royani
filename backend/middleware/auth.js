@@ -1,38 +1,52 @@
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/config');
 const db = require('../config/db'); // asumsikan ini koneksi mysql
+const query = util.promisify(db.query).bind(db);
+const util = require('util');
 
-exports.verifyToken = (req, res, next) => {
-    const token = req.headers.authorization?.split(' ')[1];
+exports.verifyToken = async (req, res, next) => {
+    const authHeader = req.headers.authorization;
 
-    if (!token) {
-        return res.status(401).json({ error: 'Token tidak ditemukan!' });
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ error: 'Authorization header tidak valid' });
     }
+
+    const token = authHeader.split(' ')[1];
 
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
         const userId = decoded.id;
 
         // Ambil user dari DB
-        db.query('SELECT * FROM users WHERE id = ?', [userId], (err, result) => {
-            if (err) return res.status(500).json({ error: 'DB error' });
+        const results = await query('SELECT * FROM users WHERE id = ?', [userId]);
+        const user = results[0];
 
-            const user = result[0];
+        if (!user) {
+            return res.status(404).json({ error: 'User tidak ditemukan' });
+        }
 
-            if (!user) {
-                return res.status(404).json({ error: 'User tidak ditemukan' });
-            }
+        if (user.status === 'blokir') {
+            return res.status(403).json({ error: 'Akun Anda telah diblokir' });
+        }
 
-            if (user.status === 'blokir') {
-                return res.status(403).json({ error: 'Akun Anda telah diblokir' });
-            }
-
-            // Simpan user ke request
-            req.user = user;
-            next();
-        });
+        // Simpan user ke request
+        req.user = user;
+        next();
     } catch (err) {
-        console.error('JWT Error:', err.message);
-        return res.status(401).json({ error: 'Token tidak valid' });
+        if (err.name === 'TokenExpiredError') {
+            return res.status(401).json({ error: 'Token telah kedaluwarsa' });
+        } else if (err.name === 'JsonWebTokenError') {
+            return res.status(401).json({ error: 'Token tidak valid' });
+        } else {
+            console.error('Unexpected error in verifyToken:', err);
+            return res.status(500).json({ error: 'Terjadi kesalahan pada server' });
+        }
     }
+};
+
+exports.requireRole = (allowedRoles) => (req, res, next) => {
+    if (!allowedRoles.includes(req.user.role)) {
+        return res.status(403).json({ error: 'Akses ditolak' });
+    }
+    next();
 };

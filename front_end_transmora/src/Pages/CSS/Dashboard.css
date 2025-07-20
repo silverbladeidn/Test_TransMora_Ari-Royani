@@ -4,15 +4,23 @@
 }
 
 .Home {
-    min-height: 100vh;
+    height: calc(100vh - 64px);
+    /* dikurangi tinggi navbar */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 1rem;
+    /* cukup kecil, hindari overflow */
     background-color: #0f172a;
     color: #ff00ea;
     font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* cegah scrolling kecil */
 }
+
 
 .loading-container {
     position: fixed;
