@@ -1,0 +1,37 @@
+/* Global background dan font */
+body {
+    background: #0f0f0f;
+    color: #ff00ea;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Tabel futuristik */
+.table-dark {
+    background-color: #121212;
+    color: #ff00ea;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.table-dark th {
+    background: #1c1c1c;
+    color: #ff00eaa6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    box-shadow: 0 2px 5px #0ff4;
+}
+
+.table-dark td {
+    background-color: #1e1e1e;
+    border: none;
+    color: #ff00ea;
+    box-shadow: 0 0 10px #0ff2;
+}
+
+/* Efek hover futuristik */
+.table-dark tbody tr:hover {
+    background-color: #292929;
+    box-shadow: 0 0 15px #ff00ea;
+    transition: 0.3s ease;
+}

@@ -12,7 +12,7 @@
 
 .logo {
     font-size: 1.5rem;
-    color: #00fff7;
+    color: #ff00ea;
     font-weight: bold;
     cursor: pointer;
     font-family: 'Orbitron', sans-serif;
@@ -32,5 +32,17 @@
 }
 
 .nav-links li:hover {
-    color: #00fff7;
+    color: #ff00ea;
+}
+
+.language-toggle {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.language-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
