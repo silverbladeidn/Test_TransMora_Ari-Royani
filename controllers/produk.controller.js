@@ -1,13 +1,51 @@
 const db = require('../config/db');
 
+
+/**
+ * Mendapatkan semua atau satu data produk
+ */
 exports.getAllProduct = (req, res) => {
-    db.query('SELECT * FROM produk', (err, results) => {
+    const { cari, hargaminim, hargamaxim, stokmaxim, stokminim } = req.query;
+
+    let sql = 'SELECT * FROM produk WHERE 1=1';
+    let params = [];
+
+    if (cari) {
+        sql += ' AND nama LIKE ?';
+        params.push(`%${cari}%`);
+    }
+
+    if (hargaminim) {
+        sql += ' AND harga >= ?';
+        params.push(Number(hargaminim));
+    }
+
+    if (hargamaxim) {
+        sql += ' AND harga <= ?';
+        params.push(Number(hargamaxim));
+    }
+
+    if (stokminim) {
+        sql += ' AND jumlah_barang >= ?';
+        params.push(Number(stokminim));
+    }
+
+    if (stokmaxim) {
+        sql += ' AND jumlah_barang <= ?';
+        params.push(Number(stokmaxim));
+    }
+
+    db.query(sql, params, (err, results) => {
         if (err) return res.status(500).json({ error: err });
         res.json(results);
     });
+
 };
 
-// Tambah user
+
+/**
+ * Menambah data produk
+ */
 exports.createProduct = async (req, res) => {
     const { nama, harga, jumlah_barang } = req.body;
 
@@ -25,7 +63,9 @@ exports.createProduct = async (req, res) => {
     }
 };
 
-// Ubah product
+/**
+ * Mengubah data produk
+ */
 exports.updateProduct = async (req, res) => {
     const { nama, harga, jumlah_barang } = req.body;
     const productId = req.params.id;
@@ -58,7 +98,9 @@ exports.updateProduct = async (req, res) => {
     }
 };
 
-// Hapus user
+/**
+ * Menghapus data produk
+ */
 exports.deleteProduct = async (req, res) => {
     const productId = req.params.id;
 

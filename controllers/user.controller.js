@@ -2,6 +2,9 @@ const bcrypt = require('bcrypt');
 const db = require('../config/db');
 const jwt = require('jsonwebtoken');
 
+/**
+ * Mendapatkan semua data user
+ */
 exports.getAllUsers = (req, res) => {
     db.query('SELECT * FROM users', (err, results) => {
         if (err) return res.status(500).json({ error: err });
@@ -9,7 +12,9 @@ exports.getAllUsers = (req, res) => {
     });
 };
 
-// Tambah user
+/**
+ * Menambah data user
+ */
 exports.createUser = async (req, res) => {
     const { nama_user, email, password, roles, status } = req.body;
 
@@ -44,7 +49,9 @@ exports.createUser = async (req, res) => {
     }
 };
 
-// Ubah user
+/**
+ * Mengubah data user
+ */
 exports.updateUser = async (req, res) => {
     const { nama_user, email, password, roles, status } = req.body;
     const userId = req.params.id;
@@ -97,7 +104,9 @@ exports.updateUser = async (req, res) => {
     }
 };
 
-// Hapus user
+/**
+ * Menghapus data user
+ */
 exports.deleteUser = async (req, res) => {
     const userId = req.params.id;
 
@@ -126,7 +135,9 @@ exports.deleteUser = async (req, res) => {
     }
 };
 
-// Ubah status user
+/**
+ * Mengubah status user
+ */
 exports.updateStatus = async (req, res) => {
     const { status } = req.body;
     const userId = req.params.id;
@@ -156,6 +167,9 @@ exports.updateStatus = async (req, res) => {
     }
 };
 
+/**
+ * Sebagai logic process untuk login admin dan user
+ */
 exports.login = async (req, res) => {
     const { email, password } = req.body;
 
