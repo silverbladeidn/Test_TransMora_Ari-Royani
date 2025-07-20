@@ -1,11 +1,8 @@
 const db = require('../config/db');
 
-/**
- * Mendapatkan semua atau satu data pemasukan
- */
+// Get all storing entries
 exports.getAllStoring = (req, res) => {
-    const { search, dateminim, datemaxim } = req.query;
-    let query = `
+    const query = `
         SELECT 
             pb.id, 
             pb.produk_id, 
@@ -15,43 +12,16 @@ exports.getAllStoring = (req, res) => {
             pb.keterangan
         FROM pemasukan_barang pb
         JOIN produk pr ON pb.produk_id = pr.id
-        WHERE 1=1
+        ORDER BY pb.id ASC
     `;
 
-    let params = [];
-
-    if (search) {
-        query += ' AND pr.nama LIKE ?';
-        params.push(`%${search}%`);
-    }
-
-    if (dateminim) {
-        query += ' AND pb.tanggal >= ?';
-        params.push(dateminim);
-    }
-
-    if (datemaxim) {
-        query += ' AND pb.tanggal <= ?';
-        params.push(datemaxim);
-    }
-
-    query += ' ORDER BY pb.id ASC';
-
-    db.query(query, params, (err, results) => {
-        if (err) {
-            console.error('Database error:', err);
-            return res.status(500).json({
-                error: 'Gagal mengambil data pemasukan',
-                details: err.message
-            });
-        }
+    db.query(query, (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
         res.json(results);
     });
 };
 
-/**
- * Menambah data pemasukan
- */
+// Add new storing entry
 exports.createStoring = async (req, res) => {
     const { produk_id, jumlah, keterangan } = req.body;
     const tanggal = new Date().toISOString().slice(0, 10); // format YYYY-MM-DD
@@ -110,9 +80,7 @@ exports.createStoring = async (req, res) => {
     }
 };
 
-/**
- * Mengubah data pemasukan
- */
+// Update storing entry
 exports.updateStoring = async (req, res) => {
     const { produk_id, jumlah, keterangan } = req.body;
     const storingId = req.params.id;
@@ -211,9 +179,7 @@ exports.updateStoring = async (req, res) => {
     }
 };
 
-/**
- * Menghapus data pemasukan
- */
+// Delete storing entry
 exports.deleteStoring = async (req, res) => {
     const id = req.params.id;
 

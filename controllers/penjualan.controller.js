@@ -1,12 +1,10 @@
 const db = require('../config/db');
 
 /**
- * Mendapatkan semua atau satu data penjualan
+ * Mendapatkan semua data penjualan
  */
 exports.getAllSales = (req, res) => {
-  const { search, dateminim, datemaxim } = req.query;
-
-  let query = `
+  const query = `
     SELECT 
       pb.id, 
       pb.produk_id, 
@@ -16,29 +14,10 @@ exports.getAllSales = (req, res) => {
       pb.keterangan
     FROM penjualan_barang pb
     JOIN produk pr ON pb.produk_id = pr.id
-    WHERE 1=1
+    ORDER BY pb.id ASC
   `;
 
-  let params = [];
-
-  if (search) {
-    query += ' AND pr.nama LIKE ?';
-    params.push(`%${search}%`);
-  }
-
-  if (dateminim) {
-    query += ' AND pb.tanggal >= ?';
-    params.push(dateminim);
-  }
-
-  if (datemaxim) {
-    query += ' AND pb.tanggal <= ?';
-    params.push(datemaxim);
-  }
-
-  query += ' ORDER BY pb.id ASC';
-
-  db.query(query, params, (err, results) => {
+  db.query(query, (err, results) => {
     if (err) return res.status(500).json({ error: err });
     res.json(results);
   });
@@ -227,7 +206,7 @@ exports.deleteSales = (req, res) => {
   });
 };
 
-// Helper function untuk mendapatkan nama produk dan mengirim response sukses
+// Helper function untuk mendapatkan nama produk
 function getProductName(produkId, callback) {
   db.query('SELECT nama FROM produk WHERE id = ?', [produkId], (err, produkData) => {
     if (err) return callback(err);
@@ -236,6 +215,7 @@ function getProductName(produkId, callback) {
   });
 }
 
+// Helper function untuk mengirim response sukses
 function sendSuccessResponse(res, id, produk_id, nama_produk, jumlah, keterangan) {
   res.status(200).json({
     pesan: '✅ Penjualan berhasil diubah & stok diperbarui.',
