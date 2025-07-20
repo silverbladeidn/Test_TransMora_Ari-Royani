@@ -41,18 +41,27 @@
 
 .form-register h2 {
     color: #ae43ff;
-    font-size: 24px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 8px;
     text-align: left;
+    width: 260px;
+}
+
+/* Form container disesuaikan supaya lebih rapi */
+.form-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .form-register input {
-    width: 250px;
-    height: 12px;
-    padding: 12px 5px;
+    width: 260px;
+    height: 45px;
+    padding: 12px 15px;
     color: #ae43ff;
-    font-size: 18px;
+    font-size: 16px;
     text-align: left;
     background-color: transparent;
     border: 2px solid #ae43ff;
@@ -61,6 +70,7 @@
     caret-color: #ff00ea;
     transition: border-color 0.3s, box-shadow 0.3s;
     font-family: 'Orbitron', sans-serif;
+    box-sizing: border-box;
 }
 
 .form-register input::placeholder {
@@ -82,14 +92,13 @@ input:-webkit-autofill {
 /* IMPROVED SELECT STYLING */
 .form-register select {
     width: 260px;
-    height: 52px;
-    padding: 12px 5px;
+    height: 48px;
+    padding: 12px 15px;
     color: #ae43ff;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 3px;
     text-align: left;
     background-color: #0f172a;
-    /* Set solid background */
     border: 2px solid #ae43ff;
     border-radius: 8px;
     outline: none;
@@ -97,21 +106,21 @@ input:-webkit-autofill {
     transition: border-color 0.3s, box-shadow 0.3s;
     font-family: 'Orbitron', sans-serif;
     cursor: pointer;
-    /* Custom dropdown arrow */
+    box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ae43ff'><path d='M7 10l5 5 5-5z'/></svg>");
     background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 20px;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 45px;
 }
 
 .form-register select:focus {
     border-color: #ff00ea;
     box-shadow: 0 0 15px #ff00ea;
     background-color: #1a1f35;
-    /* Slightly lighter on focus */
 }
 
 .form-register select:hover {
@@ -119,7 +128,6 @@ input:-webkit-autofill {
     background-color: #1a1f35;
 }
 
-/* OPTION STYLING */
 .form-register select option {
     background-color: #0f172a;
     color: #ae43ff;
@@ -159,7 +167,7 @@ input:-webkit-autofill {
     }
 }
 
-/* Alternative: Custom Select Wrapper for more control */
+/* Custom Select Wrapper untuk kendali atau control lebih */
 .custom-select-wrapper {
     position: relative;
     display: inline-block;
@@ -188,8 +196,8 @@ input:-webkit-autofill {
 .form-buttons button {
     display: inline-block;
     width: 120px;
-    height: 60px;
-    padding: 10px;
+    height: 48px;
+    padding: 12px;
     margin: 0 10px;
     background-color: transparent;
     border: 2px solid #ae43ff;
@@ -199,6 +207,8 @@ input:-webkit-autofill {
     cursor: pointer;
     transition: 0.3s ease;
     font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
 .form-buttons button:hover {
@@ -212,9 +222,11 @@ input:-webkit-autofill {
     flex-direction: row;
     margin-top: 30px;
     gap: 20px;
+    width: 260px;
+    justify-content: center;
 }
 
-/* Error and Success Messages */
+/* Pesan untuk galat dan berhasil */
 .error-message {
     background-color: rgba(220, 38, 38, 0.1);
     border: 1px solid #dc2626;

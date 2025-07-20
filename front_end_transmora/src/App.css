@@ -15,28 +15,25 @@
 }
 
 .spinner {
-  width: 60px;
-  height: 60px;
-  border: 6px solid #ffffff;
+  margin: 20px auto;
+  width: 80px;
+  height: 80px;
+  border: 6px solid ffffff(255, 255, 255, 0.2);
   border-top: 6px solid #ff00ea;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: 20px;
 }
 
 .loading-text {
-  font-size: 1.5rem;
   font-weight: bold;
   color: #ff00ea;
   font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  text-shadow: 0 0 10px #0ff;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
