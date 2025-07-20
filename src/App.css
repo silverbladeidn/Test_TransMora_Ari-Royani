@@ -1,0 +1,83 @@
+.Home {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f172a;
+  color: #ff00ea;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spinner {
+  margin: 20px auto;
+  width: 80px;
+  height: 80px;
+  border: 6px solid ffffff(255, 255, 255, 0.2);
+  border-top: 6px solid #ff00ea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  font-weight: bold;
+  color: #ff00ea;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  text-shadow: 0 0 10px #0ff;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.auth-buttons h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #a438f6;
+  text-shadow: 0 0 10px #ff70f3;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  /* transparan putih */
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px #8c03f5;
+  /* neon glow */
+  border: 1px solid #ff00ea;
+}
+
+.auth-buttons button {
+  width: 150px;
+  padding: 10px;
+  margin: 10px;
+  background-color: transparent;
+  border: 2px solid #ae43ff;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #ae43ff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.auth-buttons button:hover {
+  background-color: #8f02fb;
+  color: #ffffff;
+  box-shadow: 0 0 10px #8f02fb;
+}
+
+.auth-buttons button:active {
+  transform: scale(0.95);
+}

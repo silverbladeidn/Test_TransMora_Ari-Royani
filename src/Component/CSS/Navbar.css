@@ -1,0 +1,49 @@
+.futuristic-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0f172a;
+    padding: 0.75rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-shrink: 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #ff00ea;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li {
+    color: #ffffffcc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.nav-links li:hover {
+    color: #ff00ea;
+}
+
+.language-toggle {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.language-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
